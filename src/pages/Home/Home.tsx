@@ -1,16 +1,18 @@
 import { People } from '@/data';
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 
 const Home = () => {
   const pageSize = 5;
-  const columns: GridColDef<(typeof People)[number]>[] = [{
-    field: 'name',
-    headerName: 'Name',
-    flex: 1,
-    minWidth: 150,
-    renderCell: (params: GridRenderCellParams) => <>{params.value}</>
-  }]
+  const columns: GridColDef<(typeof People)[number]>[] = [
+    {
+      field: 'name',
+      headerName: 'Name',
+      flex: 1,
+      minWidth: 150,
+      editable: false,
+    }
+  ]
 
   return (
     <div>
