@@ -1,7 +1,6 @@
 import { People } from '@/data';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-
 const Home = () => {
   const pageSize = 5;
   const columns: GridColDef<(typeof People)[number]>[] = [
@@ -11,27 +10,38 @@ const Home = () => {
       flex: 1,
       minWidth: 150,
       editable: false,
+    },
+    {
+      field: 'category',
+      headerName: 'Category',
+      flex: 1,
+      editable: false,
+    },
+    {
+      field: 'company',
+      headerName: 'Company',
+      flex: 1,
+      editable: false,
     }
   ]
 
   return (
-    <div>
-      <DataGrid
-        rows={People}
-        columns={columns}
-        disableColumnSelector
-        disableRowSelectionOnClick
-        autoHeight
-        pageSizeOptions={[pageSize]}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: pageSize,
-            },
+    <DataGrid
+      rows={People}
+      columns={columns}
+      disableColumnSelector
+      disableRowSelectionOnClick
+      autoHeight
+      pageSizeOptions={[pageSize]}
+      initialState={{
+        pagination: {
+          paginationModel: {
+            pageSize: pageSize,
           },
-        }}
-      />
-    </div>
+        },
+      }}
+      getRowId={(row) => row.id}
+    />
   )
 }
 export default Home
